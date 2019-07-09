@@ -9,11 +9,7 @@ use App\Http\Resources\Article as ArticleResource;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         // Get articles
@@ -24,23 +20,31 @@ class ArticleController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $article = $request->isMethod('put') ? Article::findOrFail($request->article_id) : new Article;
 
-        $article->id = $request->input('article_id');
-        $article->title = $request->input('title');
-        $article->body = $request->input('body');
+        $this->validate($request , ['title'=>'required','body'=>'required']);
+
+        $article = Article::create($request->all());
+
 
         if($article->save()) {
             return new ArticleResource($article);
         }
+
+    }
+
+    public function update(Request $request , $id){
+
+
+        $article = Article::findOrFail($id);
+        $updated = $article->update($request->all());
+        if($updated){
+            return "it is updated";
+        }
+
+        return new ArticleResource($article);
+
 
     }
 
