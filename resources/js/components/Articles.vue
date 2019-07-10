@@ -94,7 +94,7 @@
             deleteArticle(id){
 
                 if(confirm('Are You Sure?')){
-                    fetch('api/article/'.this.article.id , {
+                    fetch('api/article/'+id , {
                         method: 'delete'
                     })
                         .then(res => res.json())

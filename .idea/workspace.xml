@@ -20,12 +20,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Articles.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+            <state relative-caret-position="237">
+              <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
               <folding>
                 <element signature="e#804#1139#0" />
                 <element signature="e#1311#1343#0" />
-                <element signature="e#1359#1431#0" />
               </folding>
             </state>
           </provider>
@@ -242,12 +241,12 @@
       <option name="presentableId" value="Default" />
       <updated>1562686531407</updated>
       <workItem from="1562686533532" duration="2288000" />
-      <workItem from="1562723120791" duration="7032000" />
+      <workItem from="1562723120791" duration="7635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9320000" />
+    <option name="totallyTimeSpent" value="9923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -388,12 +387,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Articles.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+        <state relative-caret-position="237">
+          <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
           <folding>
             <element signature="e#804#1139#0" />
             <element signature="e#1311#1343#0" />
-            <element signature="e#1359#1431#0" />
           </folding>
         </state>
       </provider>

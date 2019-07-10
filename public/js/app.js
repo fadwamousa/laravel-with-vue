@@ -1794,7 +1794,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (confirm('Are You Sure?')) {
-        fetch('api/article/'["this"].id, {
+        fetch('api/article/' + id, {
           method: 'delete'
         }).then(function (res) {
           return res.json();
