@@ -13,7 +13,17 @@
                     <a class="page-link" href="#">Previous</a>
                 </li>
 
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item disabled">
+                    <a class="page-link text-dark" href="#">Page
+                        {{ pagination.current_page}} OF
+                        {{ pagination.last_page}}
+                    </a>
+                </li>
+
+                <li v-bind:class="[{disabled : !pagination.next_page_url}]"
+                    class="page-item" @click="fetchArticles(pagination.next_page_url)">
+                    <a class="page-link" href="#">Next</a>
+                </li>
             </ul>
         </nav>
 
@@ -23,6 +33,11 @@
 
             <h3> {{ article.title}} </h3>
             <p> {{ article.body}}</p>
+
+            <hr>
+            <button @click="deleteArticle(article.id)" class="btn btn-danger">
+                Delete
+            </button>
 
         </div>
 
@@ -74,6 +89,22 @@
                 }
 
                 this.pagination = pagination;
+
+            },
+            deleteArticle(id){
+
+                if(confirm('Are You Sure?')){
+                    fetch('api/article/'.this.article.id , {
+                        method: 'delete'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+
+                                alert('Article Removed');
+                                this.fetchArticles();
+
+                        }).catch(err => console.log(err));
+                }
 
             }
 
