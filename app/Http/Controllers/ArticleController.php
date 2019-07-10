@@ -13,7 +13,8 @@ class ArticleController extends Controller
     public function index()
     {
         // Get articles
-        $articles = Article::paginate(15);
+        //$articles = Article::paginate(5);
+        $articles = Article::orderBy('created_at','DESC')->paginate(5);
 
         // Return collection of articles as a resource
         return ArticleResource::collection($articles);
@@ -22,38 +23,16 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-
-        $this->validate($request , ['title'=>'required','body'=>'required']);
-
-        $article = Article::create($request->all());
-
-
+        $article = $request->isMethod('put') ? Article::findOrFail($request->article_id) : new Article;
+        $article->id = $request->input('article_id');
+        $article->title = $request->input('title');
+        $article->body = $request->input('body');
         if($article->save()) {
             return new ArticleResource($article);
         }
 
     }
 
-    public function update(Request $request , $id){
-
-
-        $article = Article::findOrFail($id);
-        $updated = $article->update($request->all());
-        if($updated){
-            return "it is updated";
-        }
-
-        return new ArticleResource($article);
-
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         // Get article
