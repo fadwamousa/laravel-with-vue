@@ -5,6 +5,23 @@
 
 
         <h2>Hello and Welcome In Vue</h2>
+        <form  @submit.prevent="addArticle" class="mb-3">
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Text Title"
+                       v-model="article.title">
+            </div>
+            <div class="form-group">
+                <textarea v-model="article.body"
+                          cols="30"
+                          rows="10"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-light btn-block">
+                Save
+            </button>
+        </form>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li  v-bind:class="[{disabled : !pagination.prev_page_url}]"
@@ -106,6 +123,29 @@
                         }).catch(err => console.log(err));
                 }
 
+            },
+            addArticle(){
+                if(this.edit === false){
+                    //add
+
+                    fetch('api/article',{
+                        method:'post',
+                        body: JSON.stringify(this.article),
+                        headers:{
+                            'content-type' : 'application/json'
+                        }
+                    })
+                        .then(res => res.json())
+                        .then( data => {
+                            this.article.title = '';
+                            this.article.body='';
+                            alert('Article Added');
+                            this.fetchArticles();
+                        })
+                        .catch( err => console.log(err));
+                }else{
+                    //update
+                }
             }
 
         }
